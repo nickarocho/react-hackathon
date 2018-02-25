@@ -1,0 +1,42 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 50px 100px;
+    border: 1px solid black;
+}
+
+.App-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding: 0 20px;
+}
+
+.App-logo {
+    text-align: left;
+    font-size: 30px;
+    line-height: .5em;
+    font-weight: 600;
+}
+
+.shopping-cart {
+    display: flex;
+    justify-content: right;
+}
+
+.shopping-cart:hover {
+    cursor: pointer;
+}
+
+.Welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 200px;
+}
+
+td, th {
+    padding: 0 20px;
+}

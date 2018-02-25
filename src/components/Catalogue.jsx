@@ -1,35 +1,53 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Table, Icon } from 'react-materialize'
+import { Table, Button, Icon } from 'react-materialize'
+import './App.css';
 
-const Catalogue = ({ products }) => (
-    <div>
-        <Table>
-            <thead>
-                <tr>
-                    <th data-field="id">Name</th>
-                    <th data-field="name">Price</th>
-                    <th data-field="price">SKU</th>
-                    <th data-field="price">Description</th>
-                </tr>
-            </thead>
+const Catalogue = ({products, search, updateSearch}) => {
 
-            <tbody>
-                {products.map((product, idx) => 
-                    <tr key={idx}>
-                        <td>{product.name}</td>
-                        <td>{product.price}</td>
-                        <td>{product.sku}</td>
-                        <td>
-                            {product.description}
-                            <Icon small right>remove_circle</Icon>
-                            <Icon small right>add_circle</Icon>
-                        </td>
+    let filteredProducts = products.filter(
+        (product) => {
+            return product.name.indexOf(search) !== -1;
+        }
+    )
+
+    return (
+        <div>
+            <div>
+                <input type="text"
+                    value={search}
+                    onChange={updateSearch} />
+            </div>
+            <Table bordered>
+                <thead>
+                    <tr>
+                        <th data-field="id">Name</th>
+                        <th data-field="name">Price</th>
+                        <th data-field="price">SKU</th>
+                        <th data-field="description">Description</th>
+                        <th data-field="actions"></th>
                     </tr>
-                )}
-            </tbody>
-        </Table>
-    </div>
-)
+                </thead>
+        
+                <tbody>
+                    {filteredProducts.map((product, idx) => 
+                        <tr key={idx}>
+                            <td>{product.name}</td>
+                            <td>{product.price}</td>
+                            <td>{product.sku}</td>
+                            <td>{product.description}</td>
+                            <td>
+                                <Button floating small className='green' waves='light' icon='add' />
+                                <Button floating small className='red' waves='light' icon='remove' />
+                            </td>
+                        </tr>
+                    )}
+                </tbody>
+            </Table>
+        </div>
+    )
+
+}
+
 
 export default Catalogue;
