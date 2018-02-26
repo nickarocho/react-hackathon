@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 100px;
+    margin: 100px 200px;
     border: 1px solid black;
 }
 
@@ -14,22 +14,57 @@
     padding: 0 20px;
 }
 
+.back-btn {
+    display: flex;
+    align-content: center;
+    border: 1px solid black;
+    padding: 0;
+    width: 170px;
+    margin: 20px;
+    background-color: white;
+    color: black;
+    vertical-align: left;
+}
+
+.back-btn .material-icons {
+    width: 30px;
+    padding-left: 5px;
+}
+
+.back-btn:hover {
+    background-color: black;
+    color: white;
+}
+
+.chip {
+    background-color: red;
+    color: white;
+    position: absolute;
+    top: 103px;
+    right: 210px;
+}
+
 .sub-header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     border-bottom: 1px solid black;
 }
 
 input.search {
     justify-content: center;
-    margin: 10px;
+    margin: 20px auto;
     padding: 0 10px;
     border: 1px solid black;
     border-radius: 10px;
     align-items: center;
     display: flex;
-    width: 50%;
+    width: 30%;
+}
+
+input[type=text]:focus:not([readonly]) {
+        border-bottom: 1px solid black;
+        box-shadow: 0 1px 0 0 black;
 }
 
 .App-logo {
@@ -37,11 +72,13 @@ input.search {
     font-size: 30px;
     line-height: .5em;
     font-weight: 600;
+    color: black;
 }
 
-.shopping-cart {
+.shopping-cart a {
     display: flex;
     justify-content: right;
+    color: black;
 }
 
 .shopping-cart:hover {

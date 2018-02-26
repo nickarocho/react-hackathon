@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Table, Button, Icon } from 'react-materialize'
 import './App.css';
 
-const Catalogue = ({products, search, updateSearch}) => {
+const Catalogue = ({products, search, updateSearch, addProduct}) => {
 
     let filteredProducts = products.filter(
         (product) => {
@@ -13,17 +13,17 @@ const Catalogue = ({products, search, updateSearch}) => {
 
     return (
         <div>
-            <div>
-                <input type="text"
+            <div className="sub-header">
+                <input className="search" placeholder="Type to search..." type="text"
                     value={search}
                     onChange={updateSearch} />
             </div>
             <Table bordered>
                 <thead>
                     <tr>
-                        <th data-field="id">Name</th>
-                        <th data-field="name">Price</th>
-                        <th data-field="price">SKU</th>
+                        <th data-field="name">Name</th>
+                        <th data-field="price">Price</th>
+                        <th data-field="sku">SKU</th>
                         <th data-field="description">Description</th>
                         <th data-field="actions"></th>
                     </tr>
@@ -37,7 +37,13 @@ const Catalogue = ({products, search, updateSearch}) => {
                             <td>{product.sku}</td>
                             <td>{product.description}</td>
                             <td>
-                                <Button floating small className='green' waves='light' icon='add' />
+                                <Button 
+                                    floating small 
+                                    className='green' 
+                                    waves='light' 
+                                    icon='add' 
+                                    onClick={() => addProduct(product._id)} 
+                                    id={product._id}/>
                                 <Button floating small className='red' waves='light' icon='remove' />
                             </td>
                         </tr>

@@ -1,9 +1,15 @@
 const Order = require('./../models/Order');
 
 function create(req, res) {
-    Order.create(req.body)
-        .then(order => res.json(product).status(200))
-        .catch(err => console.log(err));
+    let newOrder = new Order;
+
+    newOrder.id = req.body.id;
+
+    newOrder.save((err) => {
+        if (err) console.log(err);
+        Order.find({})
+        .then(order => res.json(order).status(200));
+    })
 }
 
 function index(req, res) {

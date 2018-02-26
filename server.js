@@ -10,11 +10,10 @@ require('dotenv').config();
 
 require('./config/db');
 
+app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.json());
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(logger('dev'));
 
 app.use('/api/products', require('./api/productAPI'));
 app.use('/api/order', require('./api/orderAPI'));
