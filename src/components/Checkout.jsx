@@ -20,10 +20,10 @@ const Checkout = ({products, order}) => {
                 </thead>
         
                 <tbody>
-                    {order.map((order, idx) => 
+                    {order.map((product, idx) => 
                         <tr key={idx}>
-                            <td>{order.name}</td>
-                            <td>{order.price}</td>
+                            <td>{product.name}</td>
+                            <td>{product.price}</td>
                             <td>0</td>
                         </tr>
                     )}

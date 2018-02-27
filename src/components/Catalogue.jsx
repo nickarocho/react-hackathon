@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Table, Button, Icon } from 'react-materialize'
 import './App.css';
 
-const Catalogue = ({products, search, updateSearch, addProduct}) => {
+const Catalogue = ({products, search, updateSearch, addProduct, deleteProduct}) => {
 
     let filteredProducts = products.filter(
         (product) => {
@@ -33,7 +33,7 @@ const Catalogue = ({products, search, updateSearch, addProduct}) => {
                     {filteredProducts.map((product, idx) => 
                         <tr key={idx}>
                             <td>{product.name}</td>
-                            <td>{product.price}</td>
+                            <td>${product.price}</td>
                             <td>{product.sku}</td>
                             <td>{product.description}</td>
                             <td>
@@ -42,9 +42,15 @@ const Catalogue = ({products, search, updateSearch, addProduct}) => {
                                     className='green' 
                                     waves='light' 
                                     icon='add' 
-                                    onClick={() => addProduct(product._id)} 
-                                    id={product._id}/>
-                                <Button floating small className='red' waves='light' icon='remove' />
+                                    onClick={() => addProduct(product)} 
+                                    product={product}/>
+                                <Button floating small 
+                                    className='red' 
+                                    waves='light' 
+                                    icon='remove'
+                                    onClick={() => deleteProduct(product)}
+                                    product={product}
+                                    />
                             </td>
                         </tr>
                     )}

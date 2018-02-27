@@ -17,12 +17,13 @@ class App extends Component {
         }
     }
 
-    addProduct = (id) => {
+    addProduct = (product) => {
+        console.log(product)
         fetch('api/order', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                id: id
+                product: product
             })
         })
         .then(data => data.json())
@@ -34,9 +35,18 @@ class App extends Component {
         .catch(err => console.log(err))
     }
 
+    deleteProduct = (e) => {
+        console.log(e);
+    }
+
     updateSearch = (e) => {
         this.setState({search: e.target.value.substr(0, 20)});
     }
+
+    // getCartItems = () => {
+    //     fetch('/api/order')
+
+    // }
 
     componentDidMount() {
         fetch('/api/products')
@@ -81,6 +91,7 @@ class App extends Component {
                                 search={this.state.search}
                                 updateSearch={this.updateSearch}
                                 addProduct={this.addProduct}
+                                deleteProduct={this.deleteProduct}
                                 /> 
                         : 
                             <div className="Welcome"><Preloader flashing/></div>} 
